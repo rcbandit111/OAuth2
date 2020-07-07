@@ -1,0 +1,120 @@
+18:42:29.891 [main] INFO  EngineApplication[logStartupProfileInfo:655] - The following profiles are active: local
+18:42:31.660 [main] INFO  RepositoryConfigurationDelegate[registerRepositoriesIn:127] - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+18:42:32.045 [main] INFO  RepositoryConfigurationDelegate[registerRepositoriesIn:187] - Finished Spring Data repository scanning in 366ms. Found 3 JPA repository interfaces.
+18:42:32.052 [main] INFO  RepositoryConfigurationDelegate[registerRepositoriesIn:127] - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+18:42:32.054 [main] INFO  RepositoryConfigurationDelegate[registerRepositoriesIn:187] - Finished Spring Data repository scanning in 1ms. Found 0 JPA repository interfaces.
+18:42:32.815 [main] INFO  GenericScope[setSerializationId:295] - BeanFactory id=d8d9bed1-3edd-3e0b-a340-5f4ec7b9a5ec
+18:42:33.188 [main] INFO  PostProcessorRegistrationDelegate$BeanPostProcessorChecker[postProcessAfterInitialization:335] - Bean 'contextProductionDatasource' of type [org.engine.context.ContextProductionDatasource$$EnhancerBySpringCGLIB$$a8498323] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+18:42:33.269 [main] INFO  PostProcessorRegistrationDelegate$BeanPostProcessorChecker[postProcessAfterInitialization:335] - Bean 'contextWarehouseDatasource' of type [org.engine.context.ContextWarehouseDatasource$$EnhancerBySpringCGLIB$$1fc32691] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+18:42:33.344 [main] INFO  PostProcessorRegistrationDelegate$BeanPostProcessorChecker[postProcessAfterInitialization:335] - Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@62e70ea3' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+18:42:33.352 [main] INFO  PostProcessorRegistrationDelegate$BeanPostProcessorChecker[postProcessAfterInitialization:335] - Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+18:42:33.905 [main] INFO  TomcatWebServer[initialize:108] - Tomcat initialized with port(s): 8080 (http)
+18:42:33.923 [main] INFO  Http11NioProtocol[log:173] - Initializing ProtocolHandler ["http-nio-8080"]
+18:42:33.924 [main] INFO  StandardService[log:173] - Starting service [Tomcat]
+18:42:33.926 [main] INFO  StandardEngine[log:173] - Starting Servlet engine: [Apache Tomcat/9.0.36]
+18:42:34.060 [main] INFO  [/engine][log:173] - Initializing Spring embedded WebApplicationContext
+18:42:34.061 [main] INFO  ServletWebServerApplicationContext[prepareWebApplicationContext:285] - Root WebApplicationContext: initialization completed in 4074 ms
+18:42:34.524 [main] INFO  LogHelper[logPersistenceUnitInformation:31] - HHH000204: Processing PersistenceUnitInfo [name: DS1]
+18:42:34.885 [main] INFO  Version[logVersion:44] - HHH000412: Hibernate ORM core version 5.4.18.Final
+18:42:35.251 [main] INFO  Version[<clinit>:49] - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+18:42:35.925 [main] INFO  HikariDataSource[getConnection:110] - PRODUCTION_HIKARICP_CONNECTION_POOL - Starting...
+18:42:36.100 [main] INFO  HikariDataSource[getConnection:123] - PRODUCTION_HIKARICP_CONNECTION_POOL - Start completed.
+18:42:36.205 [main] INFO  Dialect[<init>:172] - HHH000400: Using dialect: org.hibernate.dialect.MariaDB103Dialect
+18:42:37.602 [main] INFO  JtaPlatformInitiator[initiateService:52] - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+18:42:37.616 [main] INFO  LocalContainerEntityManagerFactoryBean[buildNativeEntityManagerFactory:416] - Initialized JPA EntityManagerFactory for persistence unit 'DS1'
+18:42:37.643 [main] INFO  LogHelper[logPersistenceUnitInformation:31] - HHH000204: Processing PersistenceUnitInfo [name: DS2]
+18:42:37.864 [main] INFO  HikariDataSource[getConnection:110] - WAREHOUSE_HIKARICP_CONNECTION_POOL - Starting...
+18:42:37.868 [main] INFO  HikariDataSource[getConnection:123] - WAREHOUSE_HIKARICP_CONNECTION_POOL - Start completed.
+18:42:37.871 [main] INFO  Dialect[<init>:172] - HHH000400: Using dialect: org.hibernate.dialect.MariaDB103Dialect
+18:42:38.048 [main] INFO  JtaPlatformInitiator[initiateService:52] - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+18:42:38.048 [main] INFO  LocalContainerEntityManagerFactoryBean[buildNativeEntityManagerFactory:416] - Initialized JPA EntityManagerFactory for persistence unit 'DS2'
+18:42:39.128 [main] WARN  JpaBaseConfiguration$JpaWebConfiguration[openEntityManagerInViewInterceptor:220] - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+18:42:39.245 [main] WARN  AnnotationConfigServletWebServerApplicationContext[refresh:559] - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'authorizationHeaderUtil' defined in URL [jar:file:/C:/Users/plte1219/Desktop/CJM/OAuth2/target/engine-1.0.jar!/BOOT-INF/classes!/org/engine/security/oauth2/AuthorizationHeaderUtil.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'org.springframework.security.oauth2.client.OAuth2AuthorizedClientService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+18:42:39.246 [main] INFO  LocalContainerEntityManagerFactoryBean[destroy:598] - Closing JPA EntityManagerFactory for persistence unit 'DS2'
+18:42:39.248 [main] INFO  HikariDataSource[close:350] - WAREHOUSE_HIKARICP_CONNECTION_POOL - Shutdown initiated...
+18:42:39.257 [main] INFO  HikariDataSource[close:352] - WAREHOUSE_HIKARICP_CONNECTION_POOL - Shutdown completed.
+18:42:39.258 [main] INFO  LocalContainerEntityManagerFactoryBean[destroy:598] - Closing JPA EntityManagerFactory for persistence unit 'DS1'
+18:42:39.258 [main] INFO  HikariDataSource[close:350] - PRODUCTION_HIKARICP_CONNECTION_POOL - Shutdown initiated...
+18:42:39.267 [main] INFO  HikariDataSource[close:352] - PRODUCTION_HIKARICP_CONNECTION_POOL - Shutdown completed.
+18:42:39.269 [main] INFO  StandardService[log:173] - Stopping service [Tomcat]
+18:42:39.293 [main] INFO  ConditionEvaluationReportLoggingListener[logMessage:136] - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+18:42:40.519 [main] ERROR LoggingFailureAnalysisReporter[report:40] - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 0 of constructor in org.engine.security.oauth2.AuthorizationHeaderUtil required a bean of type 'org.springframework.security.oauth2.client.OAuth2AuthorizedClientService' that could not be found.
+
+The following candidates were found but could not be injected:
+	- Bean method 'authorizedClientService' in 'OAuth2WebSecurityConfiguration' not loaded because @ConditionalOnBean (types: org.springframework.security.oauth2.client.registration.ClientRegistrationRepository; SearchStrategy: all) did not find any beans of type org.springframework.security.oauth2.client.registration.ClientRegistrationRepository
+
+
+Action:
+
+Consider revisiting the entries above or defining a bean of type 'org.springframework.security.oauth2.client.OAuth2AuthorizedClientService' in your configuration.
+
+19:06:36.576 [main] INFO  EngineApplication[logStartupProfileInfo:655] - The following profiles are active: local
+19:06:38.390 [main] INFO  RepositoryConfigurationDelegate[registerRepositoriesIn:127] - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+19:06:38.829 [main] INFO  RepositoryConfigurationDelegate[registerRepositoriesIn:187] - Finished Spring Data repository scanning in 411ms. Found 3 JPA repository interfaces.
+19:06:38.837 [main] INFO  RepositoryConfigurationDelegate[registerRepositoriesIn:127] - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+19:06:38.838 [main] INFO  RepositoryConfigurationDelegate[registerRepositoriesIn:187] - Finished Spring Data repository scanning in 0ms. Found 0 JPA repository interfaces.
+19:06:39.543 [main] INFO  GenericScope[setSerializationId:295] - BeanFactory id=d8d9bed1-3edd-3e0b-a340-5f4ec7b9a5ec
+19:06:39.900 [main] INFO  PostProcessorRegistrationDelegate$BeanPostProcessorChecker[postProcessAfterInitialization:335] - Bean 'contextProductionDatasource' of type [org.engine.context.ContextProductionDatasource$$EnhancerBySpringCGLIB$$9d265acc] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+19:06:39.976 [main] INFO  PostProcessorRegistrationDelegate$BeanPostProcessorChecker[postProcessAfterInitialization:335] - Bean 'contextWarehouseDatasource' of type [org.engine.context.ContextWarehouseDatasource$$EnhancerBySpringCGLIB$$149ffe3a] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+19:06:40.051 [main] INFO  PostProcessorRegistrationDelegate$BeanPostProcessorChecker[postProcessAfterInitialization:335] - Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@29ef6856' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+19:06:40.059 [main] INFO  PostProcessorRegistrationDelegate$BeanPostProcessorChecker[postProcessAfterInitialization:335] - Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+19:06:40.640 [main] INFO  TomcatWebServer[initialize:108] - Tomcat initialized with port(s): 8080 (http)
+19:06:40.656 [main] INFO  Http11NioProtocol[log:173] - Initializing ProtocolHandler ["http-nio-8080"]
+19:06:40.657 [main] INFO  StandardService[log:173] - Starting service [Tomcat]
+19:06:40.657 [main] INFO  StandardEngine[log:173] - Starting Servlet engine: [Apache Tomcat/9.0.36]
+19:06:40.785 [main] INFO  [/engine][log:173] - Initializing Spring embedded WebApplicationContext
+19:06:40.786 [main] INFO  ServletWebServerApplicationContext[prepareWebApplicationContext:285] - Root WebApplicationContext: initialization completed in 4128 ms
+19:06:41.181 [main] INFO  LogHelper[logPersistenceUnitInformation:31] - HHH000204: Processing PersistenceUnitInfo [name: DS1]
+19:06:41.561 [main] INFO  Version[logVersion:44] - HHH000412: Hibernate ORM core version 5.4.18.Final
+19:06:41.940 [main] INFO  Version[<clinit>:49] - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+19:06:42.521 [main] INFO  HikariDataSource[getConnection:110] - PRODUCTION_HIKARICP_CONNECTION_POOL - Starting...
+19:06:42.675 [main] INFO  HikariDataSource[getConnection:123] - PRODUCTION_HIKARICP_CONNECTION_POOL - Start completed.
+19:06:42.764 [main] INFO  Dialect[<init>:172] - HHH000400: Using dialect: org.hibernate.dialect.MariaDB103Dialect
+19:06:44.158 [main] INFO  JtaPlatformInitiator[initiateService:52] - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+19:06:44.175 [main] INFO  LocalContainerEntityManagerFactoryBean[buildNativeEntityManagerFactory:416] - Initialized JPA EntityManagerFactory for persistence unit 'DS1'
+19:06:44.207 [main] INFO  LogHelper[logPersistenceUnitInformation:31] - HHH000204: Processing PersistenceUnitInfo [name: DS2]
+19:06:44.427 [main] INFO  HikariDataSource[getConnection:110] - WAREHOUSE_HIKARICP_CONNECTION_POOL - Starting...
+19:06:44.432 [main] INFO  HikariDataSource[getConnection:123] - WAREHOUSE_HIKARICP_CONNECTION_POOL - Start completed.
+19:06:44.434 [main] INFO  Dialect[<init>:172] - HHH000400: Using dialect: org.hibernate.dialect.MariaDB103Dialect
+19:06:44.621 [main] INFO  JtaPlatformInitiator[initiateService:52] - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+19:06:44.622 [main] INFO  LocalContainerEntityManagerFactoryBean[buildNativeEntityManagerFactory:416] - Initialized JPA EntityManagerFactory for persistence unit 'DS2'
+19:06:45.743 [main] WARN  JpaBaseConfiguration$JpaWebConfiguration[openEntityManagerInViewInterceptor:220] - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+19:06:45.868 [main] WARN  AnnotationConfigServletWebServerApplicationContext[refresh:559] - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'authorizationHeaderUtil' defined in URL [jar:file:/C:/Users/plte1219/Desktop/CJM/OAuth2/target/engine-1.0.jar!/BOOT-INF/classes!/org/engine/security/oauth2/AuthorizationHeaderUtil.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'org.springframework.security.oauth2.client.OAuth2AuthorizedClientService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+19:06:45.870 [main] INFO  LocalContainerEntityManagerFactoryBean[destroy:598] - Closing JPA EntityManagerFactory for persistence unit 'DS2'
+19:06:45.873 [main] INFO  HikariDataSource[close:350] - WAREHOUSE_HIKARICP_CONNECTION_POOL - Shutdown initiated...
+19:06:45.883 [main] INFO  HikariDataSource[close:352] - WAREHOUSE_HIKARICP_CONNECTION_POOL - Shutdown completed.
+19:06:45.884 [main] INFO  LocalContainerEntityManagerFactoryBean[destroy:598] - Closing JPA EntityManagerFactory for persistence unit 'DS1'
+19:06:45.888 [main] INFO  HikariDataSource[close:350] - PRODUCTION_HIKARICP_CONNECTION_POOL - Shutdown initiated...
+19:06:45.894 [main] INFO  HikariDataSource[close:352] - PRODUCTION_HIKARICP_CONNECTION_POOL - Shutdown completed.
+19:06:45.896 [main] INFO  StandardService[log:173] - Stopping service [Tomcat]
+19:06:45.915 [main] INFO  ConditionEvaluationReportLoggingListener[logMessage:136] - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+19:06:47.140 [main] ERROR LoggingFailureAnalysisReporter[report:40] - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 0 of constructor in org.engine.security.oauth2.AuthorizationHeaderUtil required a bean of type 'org.springframework.security.oauth2.client.OAuth2AuthorizedClientService' that could not be found.
+
+The following candidates were found but could not be injected:
+	- Bean method 'authorizedClientService' in 'OAuth2WebSecurityConfiguration' not loaded because @ConditionalOnBean (types: org.springframework.security.oauth2.client.registration.ClientRegistrationRepository; SearchStrategy: all) did not find any beans of type org.springframework.security.oauth2.client.registration.ClientRegistrationRepository
+
+
+Action:
+
+Consider revisiting the entries above or defining a bean of type 'org.springframework.security.oauth2.client.OAuth2AuthorizedClientService' in your configuration.
+
