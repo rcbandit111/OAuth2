@@ -31,29 +31,10 @@ public class OAuth2ResourceServerConfig extends ResourceServerConfigurerAdapter 
 
     @Override
     public void configure(final HttpSecurity http) throws Exception {
-        http.sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS) //IF_REQUIRED)
-                .and()
+        http
+                //application security
                 .authorizeRequests()
-                .antMatchers("/*").permitAll() //swagger-ui
-                .antMatchers("/v1/swagger.**").permitAll()
-                .antMatchers(  // whitelist Swagger UI
-                        HttpMethod.GET,
-                        "/v2/api-docs",
-                        "/swagger-resources/**",
-                        "/swagger-ui.html**",
-                        "/webjars/**",
-                        "favicon.ico"
-                ).permitAll()
-                //.antMatchers("/swagger.**").permitAll()
-                //.antMatchers("/swagger-ui.**").permitAll()
-                //.antMatchers("/webjars/springfox-swagger-ui/**/**").permitAll()
-                //.antMatchers("/v2/api-docs").permitAll()
-                //.antMatchers("/swagger-resources").permitAll()
-                .antMatchers("/v1/application.wadl").permitAll()
-                .antMatchers("/v1/admin/**").hasRole("ADMIN")
-                .antMatchers("/v1/dev/**").hasRole("DEVELOPER")
-                .antMatchers("/v1/pages/**").hasRole("DEVELOPER")
+                .antMatchers("/*").permitAll()
                 .anyRequest().authenticated()
                 .and().csrf().disable();
     }
@@ -61,35 +42,6 @@ public class OAuth2ResourceServerConfig extends ResourceServerConfigurerAdapter 
     @Override
     public void configure(final ResourceServerSecurityConfigurer config) {
         config.tokenServices(tokenServices);
+//        .resourceId("admin");
     }
-
-    // JWT
-
-//    @Bean
-//    public JwtAccessTokenConverter accessTokenConverter() {
-//        final JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
-//        converter.setSigningKey("123");
-//        converter.setJwtClaimsSetVerifier(jwtClaimsSetVerifier());
-//        return converter;
-//    }
-
-    @Bean
-    public JwtClaimsSetVerifier jwtClaimsSetVerifier() {
-        return new DelegatingJwtClaimsSetVerifier(Arrays.asList(issuerClaimVerifier(), customJwtClaimVerifier()));
-    }
-
-    @Bean
-    public JwtClaimsSetVerifier issuerClaimVerifier() {
-        try {
-            return new IssuerClaimVerifier(new URL("http://localhost:8081"));
-        } catch (final MalformedURLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    @Bean
-    public JwtClaimsSetVerifier customJwtClaimVerifier() {
-        return new CustomClaimVerifier();
-    }
-
 }

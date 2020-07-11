@@ -5,8 +5,8 @@ logging:
         com:
             backend: DEBUG
         org:
-            springframework: INFO
-            springframework.web: INFO
+            springframework: DEBUG
+            springframework.web: DEBUG
 app:
     admin:
         confirm-url: /admin/auth/password?token=
@@ -88,3 +88,10 @@ spring:
                 show-sql: true
             password: qwerty
             username: root
+
+    oauth2:
+        resource:
+            jwt:
+                key-pair:
+                    alias: mytestkey
+                    store-password: mystorepass
