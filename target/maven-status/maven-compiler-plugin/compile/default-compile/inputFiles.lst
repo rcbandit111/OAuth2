@@ -21,6 +21,7 @@ C:\Users\plte1219\Desktop\CJM\OAuth2\src\main\java\org\engine\context\ContextWar
 C:\Users\plte1219\Desktop\CJM\OAuth2\src\main\java\org\engine\utils\ResponseHandler.java
 C:\Users\plte1219\Desktop\CJM\OAuth2\src\main\java\org\engine\dto\ActivatePasswordDTO.java
 C:\Users\plte1219\Desktop\CJM\OAuth2\src\main\java\org\engine\utils\GenericUtils.java
+C:\Users\plte1219\Desktop\CJM\OAuth2\src\main\java\org\engine\security\CorsConfig.java
 C:\Users\plte1219\Desktop\CJM\OAuth2\src\main\java\org\engine\rest\dto\UserFilterDTO.java
 C:\Users\plte1219\Desktop\CJM\OAuth2\src\main\java\org\engine\utils\Role.java
 C:\Users\plte1219\Desktop\CJM\OAuth2\src\main\java\org\engine\production\entity\Sessions.java
@@ -47,6 +48,7 @@ C:\Users\plte1219\Desktop\CJM\OAuth2\src\main\java\org\engine\reporting\RestClie
 C:\Users\plte1219\Desktop\CJM\OAuth2\src\main\java\org\engine\exception\EngineException.java
 C:\Users\plte1219\Desktop\CJM\OAuth2\src\main\java\org\engine\exception\ErrorResponse.java
 C:\Users\plte1219\Desktop\CJM\OAuth2\src\main\java\org\engine\production\service\OldPasswordsServiceImpl.java
+C:\Users\plte1219\Desktop\CJM\OAuth2\src\main\java\org\engine\security\CustomClaimVerifier.java
 C:\Users\plte1219\Desktop\CJM\OAuth2\src\main\java\org\engine\dto\NewPasswordDTO.java
 C:\Users\plte1219\Desktop\CJM\OAuth2\src\main\java\org\engine\production\service\UsersRepository.java
 C:\Users\plte1219\Desktop\CJM\OAuth2\src\main\java\org\engine\dto\AuthenticationTokenDTO.java
@@ -54,6 +56,7 @@ C:\Users\plte1219\Desktop\CJM\OAuth2\src\main\java\org\engine\utils\ValidationMe
 C:\Users\plte1219\Desktop\CJM\OAuth2\src\main\java\org\engine\exception\EngineExceptionHandler.java
 C:\Users\plte1219\Desktop\CJM\OAuth2\src\main\java\org\engine\dto\ActivatePasswordTokenDTO.java
 C:\Users\plte1219\Desktop\CJM\OAuth2\src\main\java\org\engine\dto\NewPasswordTokenDTO.java
+C:\Users\plte1219\Desktop\CJM\OAuth2\src\main\java\org\engine\security\CustomTokenEnhancer.java
 C:\Users\plte1219\Desktop\CJM\OAuth2\src\main\java\org\engine\rest\DataPagesController.java
 C:\Users\plte1219\Desktop\CJM\OAuth2\src\main\java\org\engine\reporting\ReportingProcessor.java
 C:\Users\plte1219\Desktop\CJM\OAuth2\src\main\java\org\engine\production\service\OldPasswordsRepository.java

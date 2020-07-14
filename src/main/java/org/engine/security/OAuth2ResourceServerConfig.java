@@ -24,6 +24,7 @@ import java.util.Arrays;
 
 @Configuration
 @EnableResourceServer
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class OAuth2ResourceServerConfig extends ResourceServerConfigurerAdapter {
 
     @Autowired
@@ -31,7 +32,9 @@ public class OAuth2ResourceServerConfig extends ResourceServerConfigurerAdapter 
 
     @Override
     public void configure(final HttpSecurity http) throws Exception {
-        http
+        http.sessionManagement()
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS) //IF_REQUIRED)
+                .and()
                 //application security
                 .authorizeRequests()
                 .antMatchers("/*").permitAll()
@@ -43,5 +46,34 @@ public class OAuth2ResourceServerConfig extends ResourceServerConfigurerAdapter 
     public void configure(final ResourceServerSecurityConfigurer config) {
         config.tokenServices(tokenServices);
 //        .resourceId("admin");
+    }
+
+    // JWT
+
+//    @Bean
+//    public JwtAccessTokenConverter accessTokenConverterz() {
+//        final JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
+//        converter.setSigningKey("123");
+//        converter.setJwtClaimsSetVerifier(jwtClaimsSetVerifier());
+//        return converter;
+//    }
+
+    @Bean
+    public JwtClaimsSetVerifier jwtClaimsSetVerifier() {
+        return new DelegatingJwtClaimsSetVerifier(Arrays.asList(issuerClaimVerifier(), customJwtClaimVerifier()));
+    }
+
+    @Bean
+    public JwtClaimsSetVerifier issuerClaimVerifier() {
+        try {
+            return new IssuerClaimVerifier(new URL("http://localhost:8081"));
+        } catch (final MalformedURLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Bean
+    public JwtClaimsSetVerifier customJwtClaimVerifier() {
+        return new CustomClaimVerifier();
     }
 }

@@ -26,10 +26,17 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.sql.DataSource;
 import java.security.KeyPair;
+import java.util.Arrays;
 
 @Configuration
 @EnableAuthorizationServer
 public class OAuth2AuthorizationServerConfigJwt extends AuthorizationServerConfigurerAdapter {
+
+    @Value("${security.oauth2.resource.jwt.key-pair.store-password}")
+    private String keyStorePass;
+
+    @Value("${security.oauth2.resource.jwt.key-pair.alias}")
+    private String keyPairAlias;
 
     @Autowired
     @Qualifier("authenticationManagerBean")
@@ -44,14 +51,14 @@ public class OAuth2AuthorizationServerConfigJwt extends AuthorizationServerConfi
     @Autowired
     private DataSource dataSource;
 
-//    @Autowired
-//    private PasswordEncoder oauthClientPasswordEncoder;
+    @Autowired
+    private PasswordEncoder oauthClientPasswordEncoder;
 
     @Override
     public void configure(final AuthorizationServerSecurityConfigurer oauthServer) throws Exception {
         oauthServer.tokenKeyAccess("permitAll()")
-                .checkTokenAccess("isAuthenticated()");
-//                .passwordEncoder(oauthClientPasswordEncoder);
+                .checkTokenAccess("isAuthenticated()")
+                .passwordEncoder(oauthClientPasswordEncoder);
     }
 
     @Override
@@ -82,6 +89,7 @@ public class OAuth2AuthorizationServerConfigJwt extends AuthorizationServerConfi
     @Override
     public void configure(final AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
         final TokenEnhancerChain tokenEnhancerChain = new TokenEnhancerChain();
+        tokenEnhancerChain.setTokenEnhancers(Arrays.asList(tokenEnhancer(), accessTokenConverter()));
         endpoints.tokenStore(tokenStore())
                 .tokenEnhancer(tokenEnhancerChain)
                 .authenticationManager(authenticationManager)
@@ -90,8 +98,25 @@ public class OAuth2AuthorizationServerConfigJwt extends AuthorizationServerConfi
 
     @Bean
     public TokenStore tokenStore() {
-        return new JdbcTokenStore(dataSource);
+//        return new JdbcTokenStore(dataSource);
+        return new JwtTokenStore(accessTokenConverter());
     }
 
+    @Bean
+    public JwtAccessTokenConverter accessTokenConverter() {
+        JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
+        KeyPair keyPair = new KeyStoreKeyFactory(new ClassPathResource("keystore.jks"), keyStorePass.toCharArray()).getKeyPair(keyPairAlias);
+        converter.setKeyPair(keyPair);
+        return converter;
+    }
 
+    @Bean
+    public TokenEnhancer tokenEnhancer() {
+        return new CustomTokenEnhancer();
+    }
+
+    @Bean
+    public BCryptPasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
 }

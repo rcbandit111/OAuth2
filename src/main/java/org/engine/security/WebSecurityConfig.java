@@ -23,8 +23,13 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter implements WebMvcConfigurer {
+
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
+
+    @Autowired
+    private UserDetailsHandler detailsHandler;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -57,13 +62,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter implements W
     }
 
     @Override
-    public void configure(final AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
-                .withUser("test").password("{noop}test").roles("USER");
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.parentAuthenticationManager(authenticationManagerBean())
+                .userDetailsService(detailsHandler)
+                .passwordEncoder(passwordEncoder);
     }
-
-//    @Bean
-//    public PasswordEncoder oauthClientPasswordEncoder() {
-//        return new BCryptPasswordEncoder(4);
-//    }
 }

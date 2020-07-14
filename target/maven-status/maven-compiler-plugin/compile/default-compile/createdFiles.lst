@@ -48,6 +48,7 @@ org\engine\production\entity\OldPasswords$OldPasswordsBuilder.class
 org\engine\utils\GenericUtils.class
 org\engine\mapper\UserMapperImpl.class
 org\engine\dto\ResetPasswordDTO.class
+org\engine\security\CustomTokenEnhancer.class
 org\engine\security\WebSecurityConfig.class
 org\engine\mapper\UserMapper.class
 org\engine\exception\ErrorSource.class
@@ -60,6 +61,7 @@ org\engine\context\ContextWarehouseDatasource.class
 org\engine\dto\ResetUserDTO.class
 org\engine\exception\ErrorResponse.class
 org\engine\reporting\RestClient.class
+org\engine\security\CustomClaimVerifier.class
 org\engine\production\entity\OldPasswords.class
 org\engine\reporting\ReportRequest.class
 org\engine\reporting\ReportResponse.class
@@ -74,4 +76,5 @@ org\engine\dto\ResetPasswordDTO$ResetPasswordDTOBuilder.class
 org\engine\dto\ResetPasswordTokenDTO$ResetPasswordTokenDTOBuilder.class
 org\engine\production\entity\DataPages.class
 org\engine\reporting\ReportingProcessor.class
+org\engine\security\CorsConfig.class
 org\engine\utils\LocalDateTimeConverter.class
