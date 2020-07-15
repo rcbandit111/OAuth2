@@ -11,7 +11,14 @@ public enum ErrorDetail implements ErrorInfo {
 	EXPIRED_CREDENTIALS("1000", "Expired Credentials", "Expired Credentials", "Expired Credentials", HttpStatus.NOT_FOUND),
 	DISABLED_USER("1000", "Disabled user", "Disabled user", "Disabled user", HttpStatus.NOT_FOUND),
 	AUTHENTICATION_ERROR("1000", "Authentication error", "Authentication error", "Authentication error", HttpStatus.NOT_FOUND),
-	TEMPLATE_NOT_FOUND("1000", "Template not found", "Internal Error", "Internal Error", HttpStatus.NOT_FOUND);
+	TEMPLATE_NOT_FOUND("1000", "Template not found", "Internal Error", "Internal Error", HttpStatus.BAD_REQUEST),
+	OLD_PASSWORD_MISMATCH("1000", "Old Password Mismatch", "Internal Error", "Internal Error", HttpStatus.BAD_REQUEST),
+	CONFIRMATION_PASSWORD_MISMATCH("1000", "Confirmation Password Mismatch", "Internal Error", "Internal Error", HttpStatus.BAD_REQUEST),
+	PASSWORD_ALREADY_USED("1000", "Password Already Used", "Internal Error", "Internal Error", HttpStatus.BAD_REQUEST),
+	INVALID_TOKEN("1000", "Invalid Token", "Internal Error", "Internal Error", HttpStatus.BAD_REQUEST),
+
+	USER_EXISTS("1000", "User Exists", "Internal Error", "Internal Error", HttpStatus.BAD_REQUEST),
+	EMAIL_EXISTS("1000", "Email Exists", "Internal Error", "Internal Error", HttpStatus.BAD_REQUEST);
 
 	private String errorCode;
 	private String message;
