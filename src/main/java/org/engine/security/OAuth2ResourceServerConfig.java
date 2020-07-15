@@ -27,8 +27,12 @@ import java.util.Arrays;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class OAuth2ResourceServerConfig extends ResourceServerConfigurerAdapter {
 
-    @Autowired
     private DefaultTokenServices tokenServices;
+
+    @Autowired
+    public OAuth2ResourceServerConfig(DefaultTokenServices tokenServices){
+        this.tokenServices = tokenServices;
+    }
 
     @Override
     public void configure(final HttpSecurity http) throws Exception {

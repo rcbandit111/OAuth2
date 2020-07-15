@@ -38,6 +38,7 @@ org\engine\dto\ActivatePasswordDTO.class
 org\engine\production\service\DataPagesServiceImpl.class
 org\engine\service\EmailModel.class
 org\engine\exception\ErrorDetail.class
+org\engine\service\PasswordAdminResetHandler.class
 org\engine\dto\NewPasswordDTO$NewPasswordDTOBuilder.class
 org\engine\dto\AuthenticationTokenDTO.class
 org\engine\production\entity\Users$UsersBuilder.class
@@ -53,6 +54,7 @@ org\engine\security\WebSecurityConfig.class
 org\engine\mapper\UserMapper.class
 org\engine\exception\ErrorSource.class
 org\engine\dto\ActivatePasswordDTO$ActivatePasswordDTOBuilder.class
+org\engine\security\jwt\JwtUser.class
 org\engine\dto\AuthenticationDTO.class
 org\engine\production\service\OldPasswordsRepository.class
 org\engine\dto\AuthenticationTokenDTO$AuthenticationTokenDTOBuilder.class
@@ -67,6 +69,7 @@ org\engine\reporting\ReportRequest.class
 org\engine\reporting\ReportResponse.class
 org\engine\dto\ActivatePasswordTokenDTO$ActivatePasswordTokenDTOBuilder.class
 org\engine\dto\AuthenticationDTO$AuthenticationDTOBuilder.class
+org\engine\security\jwt\JwtTokenUtil.class
 org\engine\production\service\DataPagesService.class
 org\engine\context\ContextProductionDatasource.class
 org\engine\dto\NewPasswordTokenDTO$NewPasswordTokenDTOBuilder.class
@@ -75,6 +78,8 @@ org\engine\security\OAuth2ResourceServerConfig.class
 org\engine\dto\ResetPasswordDTO$ResetPasswordDTOBuilder.class
 org\engine\dto\ResetPasswordTokenDTO$ResetPasswordTokenDTOBuilder.class
 org\engine\production\entity\DataPages.class
+org\engine\service\UserRestService.class
+org\engine\rest\UsersController.class
 org\engine\reporting\ReportingProcessor.class
 org\engine\security\CorsConfig.class
 org\engine\utils\LocalDateTimeConverter.class

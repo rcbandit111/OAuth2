@@ -11,13 +11,21 @@ import org.springframework.security.oauth2.provider.ClientDetailsService;
 import org.springframework.security.oauth2.provider.client.BaseClientDetails;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class UserClientDetailsService implements ClientDetailsService {
 
-    @Autowired
     private UsersService usersService;
+
+    @Autowired
+    public UserClientDetailsService(UsersService usersService){
+        this.usersService = usersService;
+    }
 
     @Override
     public ClientDetails loadClientByClientId(String username) {

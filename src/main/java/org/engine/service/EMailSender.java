@@ -19,14 +19,17 @@ public class EMailSender {
 
     private static final Logger LOG = LoggerFactory.getLogger(EMailSender.class);
 
-    @Autowired
-    private JavaMailSender mailSender;
-
     @Value("${app.email.sending-enabled}")
     private boolean sendingEnabled;
-    
-    @Autowired
+
     private Configuration freemarkerConfig;
+    private JavaMailSender mailSender;
+
+    @Autowired
+    public EMailSender(Configuration freemarkerConfig, JavaMailSender mailSender){
+        this.freemarkerConfig = freemarkerConfig;
+        this.mailSender = mailSender;
+    }
 
     public void sendMail(String to, String subject, EmailModel content) {
         validateSendingParams(to, subject, content);
@@ -46,7 +49,7 @@ public class EMailSender {
                                     
             String data = geFreeMarkerTemplateContent(content.getModel());
 
-            helper.setFrom("plamen.terziev@sunlex.biz");
+            helper.setFrom("peter.penzov@gmail.com");
             helper.setTo(to);
             helper.setSubject(subject);
             helper.setText(data, true);

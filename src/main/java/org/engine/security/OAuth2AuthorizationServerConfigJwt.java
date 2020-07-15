@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.context.annotation.Primary;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -38,21 +39,24 @@ public class OAuth2AuthorizationServerConfigJwt extends AuthorizationServerConfi
     @Value("${security.oauth2.resource.jwt.key-pair.alias}")
     private String keyPairAlias;
 
-    @Autowired
+    private PasswordEncoder oauthClientPasswordEncoder;
+    private DataSource dataSource;
+    private UserClientDetailsService userClientDetailsService;
+    private UserDetailsHandler detailsHandler;
     @Qualifier("authenticationManagerBean")
     private AuthenticationManager authenticationManager;
 
     @Autowired
-    private UserDetailsHandler detailsHandler;
-
-    @Autowired
-    private UserClientDetailsService userClientDetailsService;
-
-    @Autowired
-    private DataSource dataSource;
-
-    @Autowired
-    private PasswordEncoder oauthClientPasswordEncoder;
+    public OAuth2AuthorizationServerConfigJwt(@Lazy PasswordEncoder oauthClientPasswordEncoder,
+                                              DataSource dataSource, UserClientDetailsService userClientDetailsService,
+                                              UserDetailsHandler detailsHandler,
+                                              @Qualifier("authenticationManagerBean") AuthenticationManager authenticationManager){
+        this.oauthClientPasswordEncoder = oauthClientPasswordEncoder;
+        this.dataSource = dataSource;
+        this.userClientDetailsService = userClientDetailsService;
+        this.detailsHandler = detailsHandler;
+        this.authenticationManager = authenticationManager;
+    }
 
     @Override
     public void configure(final AuthorizationServerSecurityConfigurer oauthServer) throws Exception {
