@@ -1,8 +1,11 @@
 package org.engine.production.entity;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.engine.utils.LocalDateTimeConverter;
-import org.engine.utils.Role;
 
 import javax.persistence.*;
 import java.io.Serializable;

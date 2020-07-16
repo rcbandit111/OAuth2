@@ -5,7 +5,6 @@ import org.engine.exception.ErrorDetail;
 import org.engine.production.entity.Users;
 import org.engine.production.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
