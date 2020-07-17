@@ -50,14 +50,6 @@ public class OAuth2ResourceServerConfig extends ResourceServerConfigurerAdapter 
 
     // JWT
 
-//    @Bean
-//    public JwtAccessTokenConverter accessTokenConverterz() {
-//        final JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
-//        converter.setSigningKey("123");
-//        converter.setJwtClaimsSetVerifier(jwtClaimsSetVerifier());
-//        return converter;
-//    }
-
     @Bean
     public JwtClaimsSetVerifier jwtClaimsSetVerifier() {
         return new DelegatingJwtClaimsSetVerifier(Arrays.asList(issuerClaimVerifier(), customJwtClaimVerifier()));

@@ -94,7 +94,8 @@ public class OAuth2AuthorizationServerConfigJwt extends AuthorizationServerConfi
         endpoints.tokenStore(tokenStore())
                 .tokenEnhancer(tokenEnhancerChain)
                 .authenticationManager(authenticationManager)
-                .userDetailsService(detailsHandler);
+                .userDetailsService(detailsHandler)
+                .reuseRefreshTokens(false);
     }
 
     @Bean
