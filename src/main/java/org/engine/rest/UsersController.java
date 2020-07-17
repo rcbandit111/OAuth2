@@ -35,9 +35,16 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.oauth2.common.OAuth2AccessToken;
+import org.springframework.security.oauth2.provider.OAuth2Authentication;
+import org.springframework.security.oauth2.provider.token.ConsumerTokenServices;
+import org.springframework.security.oauth2.provider.token.TokenStore;
+import org.springframework.security.oauth2.provider.token.store.JdbcTokenStore;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
@@ -77,6 +84,39 @@ public class UsersController {
         this.oldPasswordsService = oldPasswordsService;
         this.passwordEncoder = passwordEncoder;
     }
+
+    @Autowired
+    TokenStore tokenStore;
+
+    @Resource(name = "tokenServices")
+    ConsumerTokenServices tokenServices;
+
+    @RequestMapping(method = RequestMethod.POST, value = "/oauth/token/revokeById/{tokenId}")
+    @ResponseBody
+    public void revokeToken(HttpServletRequest request, @PathVariable String tokenId) {
+        tokenServices.revokeToken(tokenId);
+    }
+
+    @RequestMapping(method = RequestMethod.POST, value = "/tokens/revokeRefreshToken/{tokenId:.*}")
+    @ResponseBody
+    public String revokeRefreshToken(@PathVariable String tokenId) {
+        if (tokenStore instanceof JdbcTokenStore) {
+            ((JdbcTokenStore) tokenStore).removeRefreshToken(tokenId);
+        }
+        return tokenId;
+    }
+
+//    @Autowired
+//    JdbcTokenStore tokenStore;
+//
+//    public void logout(Principal principal) {
+//        JdbcTokenStore jdbcTokenStore = tokenStore;
+//        OAuth2Authentication oAuth2Authentication = (OAuth2Authentication) principal;
+//        OAuth2AccessToken accessToken = jdbcTokenStore.getAccessToken(oAuth2Authentication);
+//        jdbcTokenStore.removeAccessToken(accessToken.getValue());
+//        jdbcTokenStore.removeRefreshToken(accessToken.getRefreshToken());
+//    }
+
 
     // Step 1 - from reset login page user enters e-mail to send new password
 
