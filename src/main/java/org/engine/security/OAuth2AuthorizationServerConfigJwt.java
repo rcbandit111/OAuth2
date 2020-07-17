@@ -61,11 +61,12 @@ public class OAuth2AuthorizationServerConfigJwt extends AuthorizationServerConfi
         oauthServer.tokenKeyAccess("permitAll()")
                 .checkTokenAccess("isAuthenticated()")
                 .passwordEncoder(oauthClientPasswordEncoder);
+//                .sslOnly();
     }
 
     @Override
     public void configure(final ClientDetailsServiceConfigurer clients) throws Exception {
-        clients.withClientDetails(userClientDetailsService);//.jdbc(dataSource);
+        clients.withClientDetails(userClientDetailsService).build();//.jdbc(dataSource);
 
 //                .inMemory()
 //                .withClient("test")
@@ -84,8 +85,8 @@ public class OAuth2AuthorizationServerConfigJwt extends AuthorizationServerConfi
         final DefaultTokenServices defaultTokenServices = new DefaultTokenServices();
         defaultTokenServices.setTokenStore(tokenStore());
         defaultTokenServices.setSupportRefreshToken(true);
-        defaultTokenServices.setAccessTokenValiditySeconds(100);
-        defaultTokenServices.setRefreshTokenValiditySeconds(300);
+        defaultTokenServices.setAccessTokenValiditySeconds(60);
+        defaultTokenServices.setRefreshTokenValiditySeconds(80);
         defaultTokenServices.setReuseRefreshToken(false);
         return defaultTokenServices;
     }
