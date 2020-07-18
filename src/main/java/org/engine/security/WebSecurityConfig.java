@@ -3,6 +3,7 @@ package org.engine.security;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -16,15 +17,19 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 @EnableWebSecurity
+@Profile("!dev")
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter implements WebMvcConfigurer {
 
     private BCryptPasswordEncoder passwordEncoder;
     private UserDetailsHandler detailsHandler;
+    private OAuth2AuthenticationEntryPoint authenticationEntryPoint;
 
     @Autowired
-    public WebSecurityConfig(BCryptPasswordEncoder passwordEncoder, UserDetailsHandler detailsHandler){
+    public WebSecurityConfig(BCryptPasswordEncoder passwordEncoder, UserDetailsHandler detailsHandler,
+                             OAuth2AuthenticationEntryPoint authenticationEntryPoint){
         this.passwordEncoder = passwordEncoder;
         this.detailsHandler = detailsHandler;
+        this.authenticationEntryPoint = authenticationEntryPoint;
     }
 
     @Override
@@ -38,6 +43,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter implements W
                 .httpBasic()
                 .and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+
+        // If a user try to access a resource without having enough permissions
+//        http.exceptionHandling().authenticationEntryPoint(authenticationEntryPoint);
     }
 
     @Override
