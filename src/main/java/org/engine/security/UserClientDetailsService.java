@@ -49,6 +49,8 @@ public class UserClientDetailsService implements ClientDetailsService {
                 Set<GrantedAuthority> authorities = new HashSet<GrantedAuthority>();
                 authorities.add(new SimpleGrantedAuthority(value.getRole().getAuthority()));
                 details.setAuthorities(authorities);
+                details.setRefreshTokenValiditySeconds(300);
+                details.setAccessTokenValiditySeconds(100);
 
                 return details;
             }).orElseThrow(() -> new UsernameNotFoundException("User with username " + username + " not found"));
