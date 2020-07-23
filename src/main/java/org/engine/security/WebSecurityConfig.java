@@ -42,7 +42,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter implements W
                 .and()
                 .httpBasic()
                 .and()
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+
+                .and().requestMatchers().antMatchers("/oauth/revoke");
 
         // If a user try to access a resource without having enough permissions
 //        http.exceptionHandling().authenticationEntryPoint(authenticationEntryPoint);
