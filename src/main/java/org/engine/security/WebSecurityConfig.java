@@ -47,6 +47,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter implements W
                 .and()
             // Configure token revoke permissions
             .authorizeRequests().antMatchers(HttpMethod.POST, "/oauth/revoke").permitAll()
+            // Allow all requests by logged in users
+            .anyRequest().authenticated()
                 .and()
             .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
