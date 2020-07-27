@@ -39,23 +39,20 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter implements W
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-            .csrf()
-            .disable()
-            .authorizeRequests()
-                .anyRequest().authenticated()
+            .csrf().disable()
+            .httpBasic()
                 .and()
             // Configure token authentication permissions
-            .requestMatchers().antMatchers(HttpMethod.POST,"/oauth/token")
+            .authorizeRequests().antMatchers(HttpMethod.POST, "/oauth/token").authenticated()
                 .and()
             // Configure token revoke permissions
-            .requestMatchers().antMatchers(HttpMethod.POST,"/oauth/revoke")
-                .and()
-            .httpBasic()
+            .authorizeRequests().antMatchers(HttpMethod.POST, "/oauth/revoke").permitAll()
                 .and()
             .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
         // If a user try to access a resource without having enough permissions
 //        http.exceptionHandling().authenticationEntryPoint(authenticationEntryPoint);
+
     }
 
     @Override
