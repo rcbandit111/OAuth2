@@ -43,7 +43,7 @@ public class UserClientDetailsService implements ClientDetailsService {
                 details.setClientId(value.getLogin());
                 details.setClientSecret(value.getEncryptedPassword());
                 details.setAuthorizedGrantTypes(Arrays.asList("password", "refresh_token"));
-                details.setScope(Arrays.asList("read","write"));
+                details.setScope(Arrays.asList("read", "write", "offline_access"));
                 details.setRegisteredRedirectUri(Collections.singleton("http://anywhere.com"));
                 details.setResourceIds(Arrays.asList("oauth2-resource"));
                 Set<GrantedAuthority> authorities = new HashSet<GrantedAuthority>();
