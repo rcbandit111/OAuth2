@@ -34,12 +34,13 @@ public class OAuth2ResourceServerConfig extends ResourceServerConfigurerAdapter 
     public void configure(final HttpSecurity http) throws Exception {
         http.sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS) //IF_REQUIRED)
-                .and()
-                //application security
-                .authorizeRequests()
-                .antMatchers("/*").permitAll()
-                .anyRequest().authenticated()
-                .and().csrf().disable();
+                    .and()
+                // application security
+                .authorizeRequests().anyRequest().authenticated()
+                    .and()
+                .requestMatchers().antMatchers("/engine/**")
+                    .and()
+                .csrf().disable();
     }
 
     @Override
