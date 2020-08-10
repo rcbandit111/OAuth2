@@ -70,14 +70,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter implements W
     }
 
     @Override
-    public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/**");
-    }
-
-    @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.parentAuthenticationManager(authenticationManagerBean())
-                .userDetailsService(detailsHandler)
+        auth.userDetailsService(detailsHandler)
                 .passwordEncoder(passwordEncoder);
     }
 }
