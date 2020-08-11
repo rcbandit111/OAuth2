@@ -117,7 +117,11 @@ public class OAuth2AuthorizationServerConfigJwt extends AuthorizationServerConfi
     @Bean
     public TokenStore tokenStore() {
         return new JdbcTokenStore(dataSource);
-//        return new JwtTokenStore(accessTokenConverter());
+
+//        JwtTokenStore jwtTokenStore = new JwtTokenStore(accessTokenConverter());
+//        // Tables like oauth_code & oauth_approvals will be required if you are using Authorization code grant type
+//        jwtTokenStore.setApprovalStore(approvalStore());
+//        return jwtTokenStore;
     }
 
     @Bean
@@ -130,6 +134,7 @@ public class OAuth2AuthorizationServerConfigJwt extends AuthorizationServerConfi
         JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
         KeyPair keyPair = new KeyStoreKeyFactory(new ClassPathResource("keystore.jks"), keyStorePass.toCharArray()).getKeyPair(keyPairAlias);
         converter.setKeyPair(keyPair);
+        converter.setSigningKey("123");
         return converter;
     }
 
