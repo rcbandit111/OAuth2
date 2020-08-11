@@ -68,7 +68,14 @@ public class OAuth2AuthorizationServerConfigJwt extends AuthorizationServerConfi
 
     @Override
     public void configure(final ClientDetailsServiceConfigurer clients) throws Exception {
-        clients.withClientDetails(userClientDetailsService).build();//.jdbc(dataSource);
+//        clients.withClientDetails(userClientDetailsService).build();//.jdbc(dataSource);
+
+        clients.inMemory()
+                .withClient("web")
+                .secret(oauthClientPasswordEncoder.encode("secret"))
+                .authorizedGrantTypes("password", "refresh_token")
+                .scopes("all")
+                .autoApprove(true);
 
 //                .inMemory()
 //                .withClient("test")

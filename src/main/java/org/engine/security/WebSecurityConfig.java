@@ -21,7 +21,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 @EnableWebSecurity
 @Profile("!dev")
-@Order(SecurityProperties.DEFAULT_FILTER_ORDER) // Use this to apply HttpSecurity security chains
+//@Order(SecurityProperties.DEFAULT_FILTER_ORDER) // Use this to apply HttpSecurity security chains
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter implements WebMvcConfigurer {
 
     private BCryptPasswordEncoder passwordEncoder;
@@ -36,6 +36,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter implements W
         this.authenticationEntryPoint = authenticationEntryPoint;
     }
 
+    // Without @Order(SecurityProperties.DEFAULT_FILTER_ORDER) it's not applied in first order
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
