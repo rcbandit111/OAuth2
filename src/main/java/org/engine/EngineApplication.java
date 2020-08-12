@@ -13,6 +13,9 @@ import java.util.List;
 @SpringBootApplication(scanBasePackages = { "org.engine.*", "org.engine.production.service", "org.engine.warehouse.service" })
 public class EngineApplication implements WebMvcConfigurer {
 
+    /**
+     * Enable https://github.com/tkaczmarzyk/specification-arg-resolver
+     */
     @Override
     public void addArgumentResolvers(List<HandlerMethodArgumentResolver> argumentResolvers) {
         argumentResolvers.add(new SpecificationArgumentResolver());

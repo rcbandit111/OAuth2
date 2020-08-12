@@ -110,6 +110,6 @@ public class UsersServiceImpl implements UsersService {
 
     @Override
     public Page<Users> getAllBySpecification(Specification<Users> specification, Pageable pageable) {
-        return null;
+        return this.dao.findAll(specification, pageable);
     }
 }
