@@ -68,7 +68,10 @@ public class UsersServiceImpl implements UsersService {
 
     @Override
     public Optional<Users> findById(Integer id) {
-        return Optional.empty();
+        String hql = "select e from " + Users.class.getName() + " e where e.id = :id";
+        TypedQuery<Users> query = this.entityManager.createQuery(hql, Users.class).setParameter("id", id);
+        List<Users> users = query.getResultList();
+        return users.isEmpty() ? Optional.empty() : Optional.of((Users)users.get(0));
     }
 
     @Override
