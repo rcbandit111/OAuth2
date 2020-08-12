@@ -38,7 +38,7 @@ public class OAuth2ResourceServerConfig extends ResourceServerConfigurerAdapter 
                 // application security
                 .authorizeRequests().anyRequest().authenticated()
                     .and()
-                .requestMatchers().antMatchers("/engine/**")
+                .requestMatchers().antMatchers("/users/**")
                     .and()
                 .csrf().disable();
     }

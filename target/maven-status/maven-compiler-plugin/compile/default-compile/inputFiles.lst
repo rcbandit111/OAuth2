@@ -53,7 +53,6 @@ C:\Users\plte1219\Desktop\CJM\OAuth2\src\main\java\org\engine\rest\dto\UserFilte
 C:\Users\plte1219\Desktop\CJM\OAuth2\src\main\java\org\engine\context\ContextProductionDatasource.java
 C:\Users\plte1219\Desktop\CJM\OAuth2\src\main\java\org\engine\security\OAuth2ResourceServerConfig.java
 C:\Users\plte1219\Desktop\CJM\OAuth2\src\main\java\org\engine\security\OAuth2AuthorizationServerConfigJwt.java
-C:\Users\plte1219\Desktop\CJM\OAuth2\src\main\java\org\engine\security\RevokeTokenEndpoint.java
 C:\Users\plte1219\Desktop\CJM\OAuth2\src\main\java\org\engine\service\PasswordAdminResetHandler.java
 C:\Users\plte1219\Desktop\CJM\OAuth2\src\main\java\org\engine\reporting\RestClientBuilder.java
 C:\Users\plte1219\Desktop\CJM\OAuth2\src\main\java\org\engine\exception\EngineException.java

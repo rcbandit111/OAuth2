@@ -40,7 +40,6 @@ org\engine\dto\AuthenticationDTO$AuthenticationDTOBuilder.class
 org\engine\security\jwt\JwtTokenUtil.class
 org\engine\context\ContextProductionDatasource.class
 org\engine\dto\NewPasswordTokenDTO$NewPasswordTokenDTOBuilder.class
-org\engine\security\RevokeTokenEndpoint.class
 org\engine\dto\ResetPasswordDTO$ResetPasswordDTOBuilder.class
 org\engine\security\WebSecurityConfiguration.class
 org\engine\service\UserRestService.class
