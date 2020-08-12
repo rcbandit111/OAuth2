@@ -243,7 +243,7 @@ public class UsersController {
      */
     @PostMapping("confirmation_token")
     public ResponseEntity<?> confirmationToken(@Valid @RequestBody ActivatePasswordTokenDTO activatePasswordTokenDTO) {
-//Should use Object insted of generics '?'
+//Should use Object instead of generics '?'
         return usersService.findByConfirmationToken(activatePasswordTokenDTO.getConfirmationToken()).map(user -> {
 
             // TODO - we have a window of 20 min to enter confirmation password into the form and submit it. If it's old return not found
@@ -329,6 +329,7 @@ public class UsersController {
      * @return Users
      */
     @GetMapping("{id}")
+    @PreAuthorize("hasRole('ROLE_MASTER_ADMIN')")
     public ResponseEntity<?> get(@PathVariable Integer id) {
         return usersService
                 .findById(id)
@@ -345,7 +346,7 @@ public class UsersController {
      * @return
      */
     @PostMapping("{id}")
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ROLE_MASTER_ADMIN')")
     public ResponseEntity<?> save(@PathVariable Integer id, @RequestBody UserNewDTO dto) {
         return usersService
                 .findById(id)
@@ -362,7 +363,7 @@ public class UsersController {
      * @param specification
      */
     @GetMapping("find")
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ROLE_MASTER_ADMIN')")
     public Page<UserNewDTO> getAllBySpecification(
             @And({
                     @Spec(path = "name", spec = LikeIgnoreCase.class),
@@ -393,6 +394,7 @@ public class UsersController {
      * @return
      */
     @PostMapping("create")
+    @PreAuthorize("hasRole('ROLE_MASTER_ADMIN')")
     public ResponseEntity<?> create(@RequestBody UserNewDTO dto) {
         if(usersService.findByLogin(dto.getLogin()).isPresent()) {
             return new ResponseEntity<>("USER_EXISTS", HttpStatus.BAD_REQUEST);
@@ -426,7 +428,7 @@ public class UsersController {
      * @return
      */
     @GetMapping("pages")
-    //@PreAuthorize("hasRole(T(<package name>.Role).ROLE_ADMIN)")
+    @PreAuthorize("hasRole('ROLE_MASTER_ADMIN')")
     public Page<UserDTO> pages(@RequestParam(value = "page") int page, @RequestParam(value = "size") int size) {
         return usersService.findAll(page, size).map(userMapper::toDTO);
     }
